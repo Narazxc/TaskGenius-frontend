@@ -50,10 +50,10 @@ function ActivityItem({ activity }) {
 
   return (
     // bg-purple-300
-    <div>
-      <div className="flex items-center justify-between rounded-md px-4 py-2 text-gray-700 hover:bg-purple-200">
+    <li>
+      <div className="flex items-center justify-between rounded-md px-4 py-2 text-gray-700 hover:bg-purple-200 dark:hover:bg-purple-800/30">
         <div className="flex basis-[450px] flex-col justify-center gap-3 hover:cursor-pointer">
-          <p className="leading-8">
+          <p className="leading-8 dark:text-[#efeff1]">
             <span className="font-bold">{user}</span> update task{" "}
             <span className="font-bold">{taskName}</span> status to{" "}
             <span
@@ -62,7 +62,7 @@ function ActivityItem({ activity }) {
               {taskStatusObj.statusText}
             </span>
           </p>
-          <span className="text-sm">
+          <span className="text-sm dark:text-white/70">
             {formatDistanceFromNow(activity.createdAt)}
           </span>
         </div>
@@ -74,7 +74,7 @@ function ActivityItem({ activity }) {
           View
         </Link>
       </div>
-    </div>
+    </li>
   );
 }
 

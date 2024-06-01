@@ -12,10 +12,13 @@ export function useUpdateTask() {
       if (newTaskData.taskMembers && newTaskData.taskMembers.length > 0) {
         queryClient.invalidateQueries({ queryKey: ["collabTask"] });
         queryClient.invalidateQueries({ queryKey: ["tasks"] });
+        queryClient.invalidateQueries({ queryKey: ["task"] });
+        toast.success("Task successfully updated");
+      } else {
+        queryClient.invalidateQueries({ queryKey: ["tasks"] });
+        queryClient.invalidateQueries({ queryKey: ["task"] });
+        toast.success("Task successfully updated");
       }
-
-      queryClient.invalidateQueries({ queryKey: ["tasks"] });
-      toast.success("Task successfully updated");
     },
 
     onError: (err) => toast.error(err.message),

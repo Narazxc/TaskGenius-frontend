@@ -42,7 +42,7 @@ function CollaborationTask() {
         : setTableView(true);
     }
 
-    console.log("pageSize", pageSize);
+    // console.log("pageSize", pageSize);
   }, [isWorking, preference, pageSize]);
 
   function handleOpenTableView() {
@@ -86,16 +86,16 @@ function CollaborationTask() {
         <div className="ml-auto flex gap-3">
           <button
             className={`rounded-md ${
-              !tableView ? "e bg-purple-800" : ""
-            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-300`}
+              !tableView ? " bg-purple-800 dark:bg-purple-800/70" : ""
+            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-100 dark:bg-[#353535]`}
             onClick={handleCloseTableView}
           >
             <IoAlbums className="text-3xl" />
           </button>
           <button
             className={`rounded-md ${
-              tableView ? "e bg-purple-800" : ""
-            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-300`}
+              tableView ? " bg-purple-800 dark:bg-purple-800/70" : ""
+            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-100 dark:bg-[#353535]`}
             onClick={handleOpenTableView}
           >
             <IoList className="text-3xl" />
@@ -112,13 +112,17 @@ function CollaborationTask() {
         {/* Choose From Existing Task */}
         {/* className="flex-1 rounded-md bg-purple-700 py-4 text-white" */}
         <Tab.Group>
-          <Tab.List className="mb-5 flex justify-center gap-2 rounded-md bg-gray-300 p-2">
+          <Tab.List className="mb-5 flex justify-center gap-2 rounded-md bg-gray-300 p-2 dark:bg-dashboard-block">
             <Tab as={React.Fragment}>
               {({ selected }) => (
                 /* Use the `selected` state to conditionally style the selected tab. */
                 <button
                   className={`
-                    ${selected ? "bg-purple-700 text-white" : " text-black"}
+                    ${
+                      selected
+                        ? "bg-purple-700 text-white dark:bg-purple-700/70"
+                        : " text-black dark:text-[#efeff1]"
+                    }
                     flex-1 rounded-md  py-4
                   `}
                 >
@@ -131,7 +135,11 @@ function CollaborationTask() {
                 /* Use the `selected` state to conditionally style the selected tab. */
                 <button
                   className={`
-                    ${selected ? "bg-purple-700 text-white" : " text-black"}
+                     ${
+                       selected
+                         ? "bg-purple-700 text-white dark:bg-purple-700/70"
+                         : " text-black dark:text-[#efeff1]"
+                     }
                     flex-1 rounded-md  py-4
                   `}
                 >

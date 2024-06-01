@@ -63,7 +63,7 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
   }
 
   function onError(errors) {
-    console.log(errors);
+    // console.log(errors);
   }
 
   function handleChangeTaskStatus(taskStatusVal) {
@@ -78,17 +78,17 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
       <div className="mb-4">
         <label
           htmlFor="name"
-          className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+          className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
         >
           Task name
         </label>
 
-        <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full">
+        <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:ring-gray-300/20 dark:focus-within:ring-indigo-600/50 sm:max-w-full">
           <input
             type="text"
             id="name"
             disabled={isWorking}
-            className="sm:text-md block flex-1 border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6"
+            className="sm:text-md block flex-1 border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0  dark:text-[#e5e7eb] sm:leading-6"
             placeholder="Create Plan vs Zombie game"
             {...register("name", { required: "This field is required" })}
           />
@@ -102,13 +102,13 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
       <div className="mb-4">
         <label
           htmlFor="dueDate"
-          className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+          className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
         >
           Due date
         </label>
-        <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full">
+        <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:ring-gray-300/20 dark:focus-within:ring-indigo-600/50 sm:max-w-full">
           <input
-            className="sm:text-md block flex-1 border-0  bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6"
+            className="sm:text-md block flex-1 border-0 bg-transparent px-5  py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-[#e5e7eb] dark:[color-scheme:dark] sm:leading-6"
             type="datetime-local"
             // type="date"
             id="dueDate"
@@ -129,10 +129,10 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
       </div>
 
       <fieldset className="mb-6">
-        <legend className="text-lg font-semibold leading-6 text-gray-900">
+        <legend className="text-lg font-semibold leading-6 text-gray-900 dark:text-[#e5e7eb]">
           Priority
         </legend>
-        <p className="mt-1 text-sm leading-6 text-gray-600">
+        <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200/40">
           Please select the priority level of this task.
         </p>
         <div className="mt-2 space-y-3">
@@ -149,7 +149,7 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
             />
             <label
               htmlFor="high"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
             >
               High
             </label>
@@ -167,7 +167,7 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
             />
             <label
               htmlFor="medium"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
             >
               Medium
             </label>
@@ -185,7 +185,7 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
             />
             <label
               htmlFor="low"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
             >
               Low
             </label>
@@ -211,7 +211,7 @@ function CreateTaskForm({ onCloseModal, taskToEdit = {} }) {
         <div className="flex gap-10">
           <label
             htmlFor="name"
-            className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+            className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
           >
             Task status
           </label>

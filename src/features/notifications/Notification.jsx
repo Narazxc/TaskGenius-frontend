@@ -26,7 +26,6 @@ function Notification() {
 
   // console.log(notifications);
   function handleMarkAllAsRead() {
-    console.log("hello");
     markAllNotifyAsRead();
   }
 
@@ -38,19 +37,21 @@ function Notification() {
     <Popover className={`mr-10`}>
       {isLoading ? (
         <Popover.Button
-          className={`relative  rounded-md bg-gray-300 p-2 text-white active:bg-gray-400`}
+          className={`relative rounded-md bg-gray-300 p-2 text-black active:bg-gray-400 dark:bg-gray-400/40 dark:text-[#efeff1] dark:active:bg-gray-500/40`}
         >
           <IoNotificationsOutline className="text-2xl" />
         </Popover.Button>
       ) : (
         <Popover.Button
-          className={`relative rounded-md bg-gray-300 p-2 text-white active:bg-gray-400`}
+          className={`relative rounded-md bg-gray-300 p-2 text-black active:bg-gray-400 dark:bg-gray-400/40  dark:text-[#efeff1] dark:active:bg-gray-500/40`}
         >
           <IoNotificationsOutline className="text-2xl" />
           {!isLoading && numNotifications === 0 ? null : (
-            <div className="absolute right-[-8px] top-[-8px] flex h-6 w-6  rounded-full border-2 border-white bg-red-600 text-sm">
+            <div className="absolute right-[-8px] top-[-8px] flex h-6 w-6  rounded-full border-2 border-white bg-red-600 text-sm dark:border-[#efeff1]">
               {/* items-center justify-center */}
-              <span className="mx-auto">{numNotifications}</span>
+              <span className="mx-auto text-white dark:text-[#efeff1]">
+                {numNotifications}
+              </span>
             </div>
           )}
         </Popover.Button>
@@ -66,13 +67,13 @@ function Notification() {
         leaveTo="transform opacity-0 scale-95"
       >
         <Popover.Panel className="absolute z-[2] mt-4 w-[380px] -translate-x-1/2 text-sm">
-          <div className="overflow-hidden rounded-md bg-white p-2 shadow-md">
+          <div className="overflow-hidden rounded-md bg-dashboard-block p-2 shadow-md">
             <div className="flex items-center justify-between pb-2">
               <p className="text-xl font-bold">Notifications</p>
               {notifications && numNotifications > 0 && (
                 <button
                   onClick={handleMarkAllAsRead}
-                  className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-gray-200"
+                  className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-gray-200 dark:hover:bg-purple-800/50"
                 >
                   <IoMailOpenOutline className="text-xl" />
                   <span className="pt-[2px]">Mark all as read</span>
@@ -90,7 +91,7 @@ function Notification() {
                     as={Link}
                     to={`/tasks/${notification.task}`}
                     key={notification._id}
-                    className="flex items-center justify-between rounded-md bg-gray-200 px-2 py-2 text-sm"
+                    className="flex items-center justify-between rounded-md bg-main-background px-2 py-2 text-sm"
                   >
                     <div>
                       <img
@@ -115,12 +116,13 @@ function Notification() {
                     </div>
                     <div>
                       <button
-                        className="rounded-md p-3 hover:bg-gray-300"
+                        className="rounded-md p-3 text-gray-600 hover:bg-gray-300 dark:text-[#efeff1] dark:hover:bg-purple-900/80"
                         onClick={() => handleMarkAsRead(notification._id)}
                       >
-                        <IoTrashBinOutline className="text-xl text-gray-600" />
-                        {/* <span>Update</span> */}
+                        <IoTrashBinOutline className="text-xl" />
                       </button>
+
+                      {/* <span>Update</span> */}
                       {/* {!isLoading && notifications && (
                         <p>{`${
                           notification.isRead === false ? "new" : "seen"

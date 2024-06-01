@@ -15,7 +15,7 @@ function Filter({ filterdField, options }) {
   }
 
   return (
-    <div className="flex gap-1 self-stretch rounded-lg border border-gray-100 bg-white p-1 shadow-sm">
+    <div className="bg-dashboard-block flex gap-1 self-stretch rounded-lg border border-gray-100 p-1 shadow-sm dark:border-opacity-20">
       {options.map((option) => (
         <button
           key={option.value}

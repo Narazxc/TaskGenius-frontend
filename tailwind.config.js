@@ -12,6 +12,8 @@ export default {
         black: "#212529",
         "main-background": "rgba(var(--background))",
         "card-background": "rgba(var(--card-background))",
+        "dashboard-block": "rgba(var(--dashboard-block))",
+        dark: "rgba(var(--dark))",
       },
     },
   },

@@ -29,8 +29,8 @@ export async function getMyPreference() {
 
 export async function updatePreference(newPreferenceData, id) {
   // console.log("in api", newTaskData, id);
-  console.log("in api", newPreferenceData, id);
-  console.log(`${BASE_URL}/preferences/${id}`);
+  // console.log("in api", newPreferenceData, id);
+  // console.log(`${BASE_URL}/preferences/${id}`);
 
   const token = Cookies.get("jwt");
 

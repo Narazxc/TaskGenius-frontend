@@ -111,7 +111,7 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
   }
 
   function onError(errors) {
-    console.log(errors);
+    // console.log(errors);
   }
 
   function handleOpenModal() {
@@ -161,7 +161,6 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
 
   function handleChangeTaskStatus(taskStatusVal) {
     setTaskStatus(taskStatusVal);
-    console.log(taskStatus);
   }
 
   return (
@@ -170,17 +169,17 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
         <div className="mb-4">
           <label
             htmlFor="name"
-            className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+            className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
           >
             Task name
           </label>
 
-          <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full">
+          <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:ring-gray-300/20 dark:focus-within:ring-indigo-600/50 sm:max-w-full">
             <input
               type="text"
               id="name"
               disabled={isWorking}
-              className="sm:text-md block flex-1 border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6"
+              className="sm:text-md block flex-1 border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-[#e5e7eb] sm:leading-6"
               placeholder="Create Plan vs Zombie game"
               {...register("name", { required: "This field is required" })}
             />
@@ -194,13 +193,13 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
         <div className="mb-4">
           <label
             htmlFor="dueDate"
-            className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+            className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
           >
             Due date
           </label>
-          <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full">
+          <div className="mb-1 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:ring-gray-300/20 dark:[color-scheme:dark] dark:focus-within:ring-indigo-600/50 sm:max-w-full">
             <input
-              className="sm:text-md block flex-1 border-0  bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6"
+              className="sm:text-md block flex-1 border-0 bg-transparent  px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-[#e5e7eb] sm:leading-6"
               // type="date"
               type="datetime-local"
               id="dueDate"
@@ -216,10 +215,10 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
         </div>
 
         <fieldset className="mb-6">
-          <legend className="text-lg font-semibold leading-6 text-gray-900">
+          <legend className="text-lg font-semibold leading-6 text-gray-900 dark:text-[#e5e7eb]">
             Priority
           </legend>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200/40">
             Please select the priority level of this task.
           </p>
           <div className="mt-2 space-y-3">
@@ -236,7 +235,7 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
               />
               <label
                 htmlFor="high"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
               >
                 High
               </label>
@@ -254,7 +253,7 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
               />
               <label
                 htmlFor="medium"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
               >
                 Medium
               </label>
@@ -272,7 +271,7 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
               />
               <label
                 htmlFor="low"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
               >
                 Low
               </label>
@@ -287,7 +286,7 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
           <div className="flex gap-10">
             <label
               htmlFor="name"
-              className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+              className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
             >
               Task status
             </label>
@@ -353,6 +352,7 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
         bgTransparent={true}
         bgBlur={true}
         setQuery={setQuery}
+        noBorder={true}
       >
         <div className="flex h-[600px] flex-col gap-8">
           {/* <input type="text" className="mt-2 w-full rounded-md p-3" /> */}
@@ -373,14 +373,14 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
             handleSearch={handleSearch}
           />
 
-          <div className="overflow-y-auto rounded-md bg-white">
-            <ul className="grid grid-cols-1 divide-y">
+          <div className="overflow-y-auto rounded-md bg-white dark:bg-dashboard-block dark:text-[#e5e7eb] dark:[color-scheme:dark]">
+            <ul className="grid grid-cols-1 divide-y dark:divide-gray-100/20">
               {result.length !== 0 && !(query === "")
                 ? result.map((user) => (
                     <li
                       key={user.item._id}
                       onClick={() => handleAddUsers(user.item)}
-                      className="flex cursor-pointer items-center gap-8 rounded-md p-5 transition-colors duration-200 hover:bg-purple-300"
+                      className="flex cursor-pointer items-center gap-8 rounded-md p-5 transition-colors duration-200 hover:bg-purple-300 dark:hover:bg-purple-400/60"
                     >
                       <img
                         className="h-28 w-28 rounded-full"

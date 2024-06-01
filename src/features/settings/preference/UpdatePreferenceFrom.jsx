@@ -15,63 +15,35 @@ function UpdatePreferenceFrom() {
   const { isUpdating, updatePreference } = useUpdatePreference();
   const { register, formState, handleSubmit } = useForm();
 
-  console.log(theme, viewMode);
+  // console.log(theme, viewMode)
 
   const { errors } = formState;
 
-  // setting value effect
-  useEffect(() => {
-    if (!isLoading) {
-      setTheme(preferenceObj.theme);
-      setViewMode(preferenceObj.viewMode);
-    }
-  }, [
-    isLoading,
-    setTheme,
-    setViewMode,
-    preferenceObj.theme,
-    preferenceObj.viewMode,
-  ]);
+  // Initial setting of theme and viewMode
+  if (!isLoading && preferenceObj && theme === "" && viewMode === "") {
+    setTheme(preferenceObj.theme || "");
+    setViewMode(preferenceObj.viewMode || "");
+  }
 
-  //
-  useEffect(() => {
-    function handleUpdate() {
-      let data = { viewMode, theme };
-
-      if (viewMode === preferenceObj.viewMode) data.viewMode = null;
-      if (theme === preferenceObj.theme) data.theme = null;
-
-      for (const key in data) {
-        if (data[key] === null) {
-          delete data[key];
-        }
-      }
-
-      if (data.viewMode === "" || data.theme === "") return;
-
-      // console.log("Update", { ...data });
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+    if (newTheme !== preferenceObj.theme) {
       updatePreference({
-        newPreferenceData: { ...data },
+        newPreferenceData: { theme: newTheme },
         id: preferenceObj._id,
       });
     }
+  };
 
-    if (
-      !isLoading &&
-      (theme !== preferenceObj.theme || viewMode !== preferenceObj.viewMode)
-    ) {
-      // console.log("hello");
-      handleUpdate();
+  const handleViewModeChange = (newViewMode) => {
+    setViewMode(newViewMode);
+    if (newViewMode !== preferenceObj.viewMode) {
+      updatePreference({
+        newPreferenceData: { viewMode: newViewMode },
+        id: preferenceObj._id,
+      });
     }
-  }, [
-    preferenceObj.viewMode,
-    preferenceObj.theme,
-    viewMode,
-    theme,
-    isLoading,
-    preferenceObj._id,
-    updatePreference,
-  ]);
+  };
 
   function onSubmit({ row }) {
     if (row === preferenceObj.row.toString()) return;
@@ -90,40 +62,43 @@ function UpdatePreferenceFrom() {
         <form onSubmit={() => {}}>
           <div className="mb-8 flex flex-col gap-4">
             <header>
-              <h1 className="text-2xl font-semibold ">
+              <h1 className="text-2xl font-semibold">
                 Update preference settings
               </h1>
             </header>
             <div>
-              <div className="border-1 rounded-lg bg-white px-28 py-6">
-                <div className="flex items-center border-b border-[#f3f4f6] py-3">
+              <div className="border-1 rounded-lg bg-dashboard-block px-28 py-6">
+                <div className="flex items-center border-b border-[#f3f4f6] py-3 dark:border-[#f3f4f6]/5">
                   <p className="inline-block w-60 flex-none font-semibold">
                     Theme
                   </p>
 
                   <RadioGroup
-                    disabled={isUpdating}
                     value={theme}
-                    onChange={setTheme}
+                    onChange={handleThemeChange}
                     className={`basis-4/6 gap-2`}
                   >
-                    <div className="inline-flex items-center rounded-md bg-gray-200 px-1 py-2.5">
-                      <RadioGroup.Option value="light">
+                    <div className="inline-flex items-center rounded-md bg-gray-200 px-1 py-2.5 dark:bg-main-background">
+                      <RadioGroup.Option value="light" disabled={isUpdating}>
                         {({ checked }) => (
                           <span
                             className={`${
-                              checked ? "bg-purple-500 text-white" : ""
+                              checked
+                                ? "bg-purple-500 text-white dark:bg-purple-600/60"
+                                : ""
                             } cursor-pointer rounded-md px-4 py-2 transition-colors duration-150`}
                           >
                             Light
                           </span>
                         )}
                       </RadioGroup.Option>
-                      <RadioGroup.Option value="dark">
+                      <RadioGroup.Option value="dark" disabled={isUpdating}>
                         {({ checked }) => (
                           <span
                             className={`${
-                              checked ? "bg-purple-500 text-white" : ""
+                              checked
+                                ? "bg-purple-500 text-white dark:bg-purple-600/60"
+                                : ""
                             } cursor-pointer rounded-md px-4 py-2 transition-colors duration-150`}
                           >
                             Dark
@@ -136,7 +111,7 @@ function UpdatePreferenceFrom() {
                   <div className="basis-3/4">&#x200B;</div>
                 </div>
 
-                <div className="flex items-center border-b border-[#f3f4f6] py-3">
+                <div className="flex items-center border-b border-[#f3f4f6] py-3 dark:border-[#f3f4f6]/5">
                   <p className="inline-block w-60 flex-none font-semibold">
                     View mode
                   </p>
@@ -144,26 +119,30 @@ function UpdatePreferenceFrom() {
                   <RadioGroup
                     disabled={isUpdating}
                     value={viewMode}
-                    onChange={setViewMode}
+                    onChange={handleViewModeChange}
                     className={`basis-4/6 gap-2`}
                   >
-                    <div className="inline-flex items-center rounded-md bg-gray-200 px-1 py-2.5">
-                      <RadioGroup.Option value="card">
+                    <div className="inline-flex items-center rounded-md bg-gray-200 px-1 py-2.5 dark:bg-main-background">
+                      <RadioGroup.Option value="card" disabled={isUpdating}>
                         {({ checked }) => (
                           <span
                             className={`${
-                              checked ? "bg-purple-500 text-white" : ""
+                              checked
+                                ? "bg-purple-500 text-white dark:bg-purple-600/60"
+                                : ""
                             } cursor-pointer rounded-md px-4 py-2 transition-colors duration-150`}
                           >
                             Card
                           </span>
                         )}
                       </RadioGroup.Option>
-                      <RadioGroup.Option value="table">
+                      <RadioGroup.Option value="table" disabled={isUpdating}>
                         {({ checked }) => (
                           <span
                             className={`${
-                              checked ? "bg-purple-500 text-white" : ""
+                              checked
+                                ? "bg-purple-500 text-white dark:bg-purple-600/60"
+                                : ""
                             } cursor-pointer rounded-md px-4 py-2 transition-colors duration-150`}
                           >
                             Table
@@ -183,7 +162,7 @@ function UpdatePreferenceFrom() {
                   <input
                     className={`${
                       isUpdating ? "bg-gray-200" : ""
-                    } border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm transition-colors duration-300`}
+                    } border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm transition-colors duration-300 dark:border-gray-100/20 dark:bg-main-background`}
                     type="number"
                     id="row"
                     disabled={isUpdating}

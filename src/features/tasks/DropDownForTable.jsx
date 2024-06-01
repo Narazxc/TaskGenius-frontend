@@ -9,12 +9,12 @@ import {
   IoTrashOutline,
   IoTrendingUpOutline,
 } from "react-icons/io5";
-import { useUser } from "../features/authentication/useUser";
+import { useUser } from "../../features/authentication/useUser";
 import { useNavigate } from "react-router-dom";
-import { useUpdateTask } from "../features/tasks/useUpdateTask";
+import { useUpdateTask } from "../../features/tasks/useUpdateTask";
 // import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
-export default function DropDown({
+export default function DropDownForTable({
   taskCreator,
   onOpenModal,
   onDeleteTask,
@@ -31,16 +31,11 @@ export default function DropDown({
   }
 
   return (
-    <div className="absolute right-2 top-2">
+    <div className="absolute">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black/20 px-2 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 dark:hover:bg-white/40">
             <IoEllipsisVertical className="text-lg" />
-
-            {/* <ChevronDownIcon
-              className="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100"
-              aria-hidden="true"
-            /> */}
           </Menu.Button>
         </div>
         <Transition
@@ -52,80 +47,60 @@ export default function DropDown({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-dashboard-block shadow-lg ring-1 ring-black/5 focus:outline-none dark:divide-white/10 dark:border dark:border-gray-100/30">
+          <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-dashboard-block shadow-lg ring-1 ring-black/5 focus:outline-none dark:divide-white/10 dark:border dark:border-gray-100/30">
             {!isLoading && userData._id === taskCreator && (
               <div className="px-1 py-1">
-                <>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        onClick={() => navigate(`/tasks/${taskId}`)}
-                        className={`${
-                          active
-                            ? "bg-violet-500 text-white dark:bg-violet-900/50"
-                            : "text-gray-900 dark:text-[#efeff1]"
-                        } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm `}
-                      >
-                        <IoEyeOutline className="text-lg" />
-                        {/* pt-[2.5px] */}
-                        <span className="inline-block ">View detail</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        onClick={onOpenModal}
-                        className={`${
-                          active
-                            ? "bg-violet-500 text-white dark:bg-violet-900/50"
-                            : "text-gray-900 dark:text-[#efeff1]"
-                        } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm `}
-                      >
-                        <IoCreateOutline className="text-lg" />
-                        <span className="inline-block pt-1">Edit</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        onClick={onDeleteTask}
-                        className={`${
-                          active
-                            ? "bg-violet-500 text-white dark:bg-violet-900/50"
-                            : "text-gray-900"
-                        } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm text-red-500`}
-                      >
-                        <IoTrashOutline className="text-lg" />
-                        <span className="inline-block pt-0.5">Delete</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                </>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => navigate(`/tasks/${taskId}`)}
+                      className={`${
+                        active
+                          ? "bg-violet-500 text-white dark:bg-violet-900/50"
+                          : "text-gray-900 dark:text-[#efeff1]"
+                      } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm `}
+                    >
+                      <IoEyeOutline className="text-lg" />
+                      <span className="inline-block">View detail</span>
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={onOpenModal}
+                      className={`${
+                        active
+                          ? "bg-violet-500 text-white dark:bg-violet-900/50"
+                          : "text-gray-900 dark:text-[#efeff1]"
+                      } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm `}
+                    >
+                      <IoCreateOutline className="text-lg" />
+                      <span className="inline-block pt-1">Edit</span>
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={onDeleteTask}
+                      className={`${
+                        active
+                          ? "bg-violet-500 text-white dark:bg-violet-900/50"
+                          : "text-gray-900"
+                      } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm text-red-500`}
+                    >
+                      <IoTrashOutline className="text-lg" />
+                      <span className="inline-block pt-0.5">Delete</span>
+                    </button>
+                  )}
+                </Menu.Item>
               </div>
             )}
 
             {!isLoading && userData._id !== taskCreator && (
               <>
                 <div className="px-1 py-1">
-                  {/* <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        onClick={() => {}}
-                        className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
-                        } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm`}
-                      >
-                        <IoEyeOutline
-                          className="text-lg"
-                          // pt-[2.5px]
-                        />
-                        <span className="inline-block ">View detail</span>
-                      </button>
-                    )}
-                  </Menu.Item> */}
                   <Menu.Item>
                     {({ active }) => (
                       <button
@@ -137,14 +112,12 @@ export default function DropDown({
                         } group flex w-full items-center gap-2 rounded-md px-2 py-2 text-sm `}
                       >
                         <IoEyeOutline className="text-lg" />
-                        {/* pt-[2.5px] */}
-                        <span className="inline-block ">View detail</span>
+                        <span className="inline-block">View detail</span>
                       </button>
                     )}
                   </Menu.Item>
                 </div>
-
-                <div className="px-1 py-1 ">
+                <div className="px-1 py-1">
                   <div className="px-1.5 pb-2 pt-1.5 text-gray-400">
                     <p className="text-sm">Set status</p>
                   </div>
@@ -165,7 +138,6 @@ export default function DropDown({
                       </button>
                     )}
                   </Menu.Item>
-
                   <Menu.Item>
                     {({ active }) => (
                       <button

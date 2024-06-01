@@ -14,7 +14,6 @@ function TaskItem({ task }) {
   const { isDeleting, deleteTask } = useDeleteTask();
 
   function handleOpenModal() {
-    console.log("open");
     setIsOpenModal(true);
   }
 
@@ -66,10 +65,11 @@ function TaskItem({ task }) {
 
   return (
     <>
-      <li className="relative h-60 rounded-lg border-l-[6px] border-solid border-gray-300 bg-gray-300 p-10 pl-[34px] shadow-sm hover:border-l-[6px] hover:border-solid hover:border-indigo-500">
+      {/* bg-gray-300 */}
+      <li className="relative h-60 rounded-lg border-l-[6px] border-solid border-gray-300 bg-card-background  p-10 pl-[34px] shadow-sm hover:border-l-[6px] hover:border-solid hover:border-indigo-500">
         <div className="grid grid-cols-2 items-center gap-y-2.5">
           <p className="text-xl font-[600]">{task.name}</p>
-          <div className="flex gap-4">
+          <div className="grid grid-cols-[75px_auto]">
             <span>Priority:</span> <PriorityTag priorityText={task.priority} />
           </div>
           <div className="flex items-center gap-2">
@@ -83,7 +83,7 @@ function TaskItem({ task }) {
             </span>
             {`${statusCheck} ${formatDistanceFromNow(task.dueDate)}`}
           </div>
-          <div className="flex gap-4">
+          <div className="grid grid-cols-[75px_auto]">
             <span>Status:</span>
             <TaskStatusTag statusText={task.status} />
           </div>
@@ -103,7 +103,7 @@ function TaskItem({ task }) {
           <div>{formatDistanceFromNow(task.createdAt)}</div>
         </div>
         <DropDown
-          taskCreator={task.creator}
+          taskCreator={task.creator._id}
           onOpenModal={handleOpenModal}
           onDeleteTask={() => deleteTask(task._id)}
           taskId={task._id}

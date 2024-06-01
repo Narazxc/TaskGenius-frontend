@@ -32,33 +32,28 @@ export async function getTask(id) {
   const token = Cookies.get("jwt");
   // console.log(`${BASE_URL}/tasks/${id}`);
 
-  try {
-    const res = await fetch(`${BASE_URL}/tasks/${id}`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  const res = await fetch(`${BASE_URL}/tasks/${id}`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-    // { task },
+  const { data, error } = await res.json();
 
-    const {
-      data: { data: task },
-    } = await res.json();
-
-    // console.log(result);
-    // console.log(status);
-
-    // console.log(task);
-    return task;
-  } catch (err) {
-    console.log(err);
+  if (error) {
+    // console.error(error);
+    if (error.statusCode === 404) {
+      throw new Error("No document found with that ID");
+    }
   }
+
+  return data.data;
 }
 
 export async function getMyTasks({ filter, sortBy, page }) {
-  console.log(filter);
+  // console.log(filter);
   const token = Cookies.get("jwt");
 
   let url = `${BASE_URL}/tasks/my-tasks`;
@@ -84,7 +79,7 @@ export async function getMyTasks({ filter, sortBy, page }) {
       sortBy.direction === "asc" ? `${sortBy.field}` : `-${sortBy.field}`
     }`;
 
-    console.log("both", url);
+    // console.log("both", url);
   } else if (filter === null && sortBy) {
     url = `${url}?sort=${
       sortBy.direction === "asc" ? `${sortBy.field}` : `-${sortBy.field}`
@@ -156,10 +151,11 @@ export async function createTask(newTask) {
 
   if (error) {
     console.error(error);
-    throw new Error("Task could not be created");
+    if (error.code === 11000)
+      throw new Error("Task could not have the same name");
   }
 
-  console.log(res, data);
+  // console.log(res, data);
 
   return data;
 }
@@ -199,7 +195,7 @@ export async function deleteTask(id) {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log(token);
+  // console.log(token);
 
   if (!res.ok) {
     console.error(`HTTP error! Status: ${res.status}`);
@@ -228,7 +224,7 @@ export async function updateTask(newTaskData, id) {
     data: { task },
   } = await res.json();
 
-  console.log(task);
+  // console.log(task);
 
   return task;
 }
@@ -250,13 +246,13 @@ export async function getCollabTasks({ filter, sortBy }) {
       sortBy.direction === "asc" ? `${sortBy.field}` : `-${sortBy.field}`
     }`;
 
-    console.log("both", url);
+    // console.log("both", url);
   } else if (filter === null && sortBy) {
     url = `${url}?sort=${
       sortBy.direction === "asc" ? `${sortBy.field}` : `-${sortBy.field}`
     }`;
 
-    console.log("sort", url);
+    // console.log("sort", url);
   }
 
   try {

@@ -25,7 +25,7 @@ export default function Search({
     <div>
       <label
         {...htmlFor}
-        className="mb-1 block text-lg font-medium leading-6 text-gray-900"
+        className="mb-1 block text-lg font-medium leading-6 text-gray-900 dark:text-[#e5e7eb]"
       >
         Choose From Existing Task
       </label>
@@ -33,7 +33,7 @@ export default function Search({
       <div
         className={`${
           !isObjEmpty(selectedTask) ? "p-2" : ""
-        } mb-1 flex items-center rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full`}
+        } mb-1 flex items-center rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:bg-dashboard-block dark:ring-gray-300/20 dark:focus-within:ring-indigo-600/50 sm:max-w-full`}
       >
         {isObjEmpty(selectedTask) ? (
           <input
@@ -41,7 +41,7 @@ export default function Search({
             autoComplete="off"
             id="taskSearch"
             disabled={isWorking}
-            className={`sm:text-md block flex-1 border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6`}
+            className={`sm:text-md block flex-1 border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-[#e5e7eb] sm:leading-6`}
             placeholder="Create Plan vs Zombie game"
             value={taskQuery}
             {...register("taskSearch", {

@@ -80,7 +80,7 @@ function CreateCollabTaskForm({ onCloseModal, taskToEdit = {} }) {
   }
 
   function onError(errors) {
-    console.log(errors);
+    // console.log(errors);
   }
 
   function handleDeSelectTask() {
@@ -117,7 +117,7 @@ function CreateCollabTaskForm({ onCloseModal, taskToEdit = {} }) {
     setSelectedUsers([...selectedUsers, { id, name }]);
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="dark:text-[#e5e7eb]">Loading...</p>;
 
   const firstFiveTasks = tasks?.slice(0, 5);
 
@@ -195,6 +195,7 @@ function CreateCollabTaskForm({ onCloseModal, taskToEdit = {} }) {
         bgTransparent={true}
         bgBlur={true}
         setQuery={setUserQuery}
+        noBorder={true}
       >
         <div className="flex h-[600px] flex-col gap-8">
           {/* <input type="text" className="mt-2 w-full rounded-md p-3" /> */}
@@ -214,14 +215,14 @@ function CreateCollabTaskForm({ onCloseModal, taskToEdit = {} }) {
             handleSearch={handleSearchUsers}
           />
 
-          <div className="overflow-y-auto rounded-md bg-white">
-            <ul className="grid grid-cols-1 divide-y">
+          <div className="overflow-y-auto rounded-md bg-white dark:bg-dashboard-block dark:text-[#e5e7eb] dark:[color-scheme:dark]">
+            <ul className="grid grid-cols-1 divide-y dark:divide-gray-100/20">
               {userResult.length !== 0 && !(userQuery === "")
                 ? userResult.map((user) => (
                     <li
                       key={user.item._id}
                       onClick={() => handleAddUsers(user.item)}
-                      className="flex cursor-pointer items-center gap-8 rounded-md p-5 transition-colors duration-200 hover:bg-purple-300"
+                      className="flex cursor-pointer items-center gap-8 rounded-md p-5 transition-colors duration-200 hover:bg-purple-300 dark:hover:bg-purple-400/60"
                     >
                       <img
                         className="h-28 w-28 rounded-full"

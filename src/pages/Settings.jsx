@@ -13,13 +13,43 @@ function Settings() {
 
       <Tab.Group>
         <Tab.List className={`flex gap-4`}>
-          <Tab as={React.Fragment}>
+          <Tab className="" as={React.Fragment}>
             {({ selected }) => (
               /* Use the `selected` state to conditionally style the selected tab. */
+              //     <button
+              //       className={`
+              //         ${
+              //           selected
+              //             ? "border-purple-800 text-purple-800 dark:text-red-500"
+              //             : "border-transparent"
+              //         }
+              //           border-b-2 px-3 pb-[6px] text-lg text-black outline-none dark:text-white`}
+              //     >
+              //       Account
+              //     </button>
+              //   )}
+              // </Tab>
+              // <Tab className="" as={React.Fragment}>
+              //   {({ selected }) => (
+              //     /* Use the `selected` state to conditionally style the selected tab. */
+              //     <button
+              //       className={`
+              //         ${
+              //           selected
+              //             ? "border-purple-800 text-purple-800 dark:text-red-500"
+              //             : "border-transparent"
+              //         }
+              //            border-b-2 px-3 pb-[6px] text-lg text-black outline-none dark:text-white`}
+              //     >
+              //       Preference
+              //     </button>
               <button
-                className={`
-                  ${selected ? "border-b-2 text-purple-800" : ""}
-                    border-purple-800 px-3 pb-2 text-lg text-black`}
+                className={`border-b-2 px-3 pb-[6px] text-lg outline-none 
+            ${
+              selected
+                ? "border-purple-800 text-purple-800"
+                : "border-transparent text-black hover:border-purple-800/50 dark:text-white"
+            }`}
               >
                 Account
               </button>
@@ -27,11 +57,13 @@ function Settings() {
           </Tab>
           <Tab as={React.Fragment}>
             {({ selected }) => (
-              /* Use the `selected` state to conditionally style the selected tab. */
               <button
-                className={`
-                  ${selected ? "border-b-2 text-purple-800" : ""}
-                    border-purple-800 px-3 pb-2 text-lg text-black`}
+                className={`border-b-2 px-3 pb-[6px] text-lg outline-none 
+            ${
+              selected
+                ? "border-purple-800 text-purple-800"
+                : "border-transparent text-black hover:border-purple-800/50 dark:text-white"
+            }`}
               >
                 Preference
               </button>

@@ -9,6 +9,8 @@ function TaskList({ tasks, isLoading }) {
       </div>
     );
 
+  if (tasks.length <= 0) return <p>No tasks could be found.</p>;
+
   return (
     <ul className="flex flex-col gap-5">
       {tasks && tasks.map((task) => <TaskItem task={task} key={task._id} />)}

@@ -12,6 +12,7 @@ function Modal({
   setQuery,
   query,
   resetField,
+  noBorder,
 }) {
   return (
     <Transition show={isOpenModal} as={React.Fragment}>
@@ -42,7 +43,7 @@ function Modal({
           leaveTo="opacity-0"
         >
           <div
-            className={`fixed inset-0  bg-black/30 ${
+            className={`dark:bg-dark/50 fixed inset-0 bg-black/30 ${
               bgBlur ? "backdrop-blur-sm" : ""
             }`}
             aria-hidden="true"
@@ -65,7 +66,9 @@ function Modal({
           <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
             <Dialog.Panel
               className={`mx-auto w-2/3 max-w-5xl rounded-xl ${
-                bgTransparent ? "bg-transparent" : "bg-white"
+                noBorder ? "" : "border dark:border dark:border-gray-100/10"
+              }  dark:bg-main-background ${
+                bgTransparent ? "dark:bg-dark/90 bg-transparent" : "bg-white"
               } p-10`}
             >
               {/* <Dialog.Title>Create Task Form with Transition</Dialog.Title> */}

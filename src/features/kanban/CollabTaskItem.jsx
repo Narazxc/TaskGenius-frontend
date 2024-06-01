@@ -7,12 +7,13 @@ import Modal from "../../ui/Modal";
 import CreateCollabTaskForm2 from "./CreateCollabTaskForm2";
 import { useState } from "react";
 import { useDeleteTask } from "../tasks/useDeleteTask";
+import { IoAlarmOutline, IoHourglassOutline } from "react-icons/io5";
+import { url } from "../../utils/constants";
 function CollabTaskItem({ task }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const { isDeleting, deleteTask } = useDeleteTask();
 
   function handleOpenModal() {
-    console.log("open");
     setIsOpenModal(true);
   }
 
@@ -59,42 +60,62 @@ function CollabTaskItem({ task }) {
 
   return (
     <>
-      <li className="relative h-60 rounded-lg border-l-[6px] border-solid border-gray-300 bg-gray-300 p-10 pl-[34px] shadow-sm hover:border-l-[6px] hover:border-solid hover:border-indigo-500">
+      {/* bg-gray-300 */}
+      <li className="relative h-60 rounded-lg border-l-[6px] border-solid border-gray-300 bg-card-background  p-10 pl-[34px] shadow-sm hover:border-l-[6px] hover:border-solid hover:border-indigo-500">
         <div className="grid grid-cols-2 items-center gap-y-2.5">
           <p className="text-xl font-[600]">{task.name}</p>
-          <div className="flex gap-4">
+          <div className="grid grid-cols-[85px_auto]">
             <span>Priority:</span> <PriorityTag priorityText={task.priority} />
           </div>
-          <div>
+          <div className="flex items-center gap-2">
+            <IoHourglassOutline className="text-2xl" />
             <span
               className={`${
                 formattedDate1 === formattedDate2 ? "text-red-500" : ""
-              }`}
+              } text-lg`}
             >
               {formattedDate1 === formattedDate2 ? "Today " : ""}
             </span>
             {`${statusCheck} ${formatDistanceFromNow(task.dueDate)}`}
           </div>
-          <div className="flex gap-4">
+          <div className="grid grid-cols-[85px_auto]">
             <span>Status:</span>
             <TaskStatusTag statusText={task.status} />
           </div>
-          <div>{`Due Date: ${formattedDate}`}</div>
+
+          <div className="flex gap-4">
+            <IoAlarmOutline className="text-2xl text-red-600" />
+            {/* Due Date: */}
+            <span>{formattedDate}</span>
+          </div>
 
           {/* {message} */}
 
-          <div></div>
-        </div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+          <div className="grid grid-cols-[85px_auto] items-center">
+            <span>Members:</span>
+            <div className="ml-[8px] flex">
+              {task.taskMembers.map((member) => (
+                <img
+                  key={member.photo}
+                  className="ml-[-8px] h-9 w-9 rounded-full shadow-md"
+                  src={`${member.photo && url + `${member.photo}`}`}
+                  alt={`Photo of ${member.name}`}
+                />
+              ))}
+            </div>
+          </div>
 
+          <div>{formatDistanceFromNow(task.createdAt)}</div>
+        </div>
         <DropDown
-          taskCreator={task.creator}
+          taskCreator={task.creator._id}
           onOpenModal={handleOpenModal}
           onDeleteTask={() => deleteTask(task._id)}
           taskId={task._id}
-          // isOpenModal={isOpenModal}
         />
       </li>
-
       <Modal
         isOpenModal={isOpenModal}
         onOpenModal={handleOpenModal}
@@ -132,3 +153,51 @@ export default CollabTaskItem;
 //   <div>{task.priority}</div>
 //   <div>{task.status}</div>
 // </li>
+
+// 2nd changes
+// <li className="relative h-60 rounded-lg border-l-[6px] border-solid border-gray-300 bg-gray-300 p-10 pl-[34px] shadow-sm hover:border-l-[6px] hover:border-solid hover:border-indigo-500">
+//   <div className="grid grid-cols-2 items-center gap-y-2.5">
+//     <p className="text-xl font-[600]">{task.name}</p>
+//     <div className="flex gap-4">
+//       <span>Priority:</span> <PriorityTag priorityText={task.priority} />
+//     </div>
+//     <div>
+//       <span
+//         className={`${
+//           formattedDate1 === formattedDate2 ? "text-red-500" : ""
+//         }`}
+//       >
+//         {formattedDate1 === formattedDate2 ? "Today " : ""}
+//       </span>
+//       {`${statusCheck} ${formatDistanceFromNow(task.dueDate)}`}
+//     </div>
+//     <div className="flex gap-4">
+//       <span>Status:</span>
+//       <TaskStatusTag statusText={task.status} />
+//     </div>
+//     <div>{`Due Date: ${formattedDate}`}</div>
+
+//     {/* {message} */}
+
+//     <div></div>
+//   </div>
+
+//   <DropDown
+//     taskCreator={task.creator._id}
+//     onOpenModal={handleOpenModal}
+//     onDeleteTask={() => deleteTask(task._id)}
+//     taskId={task._id}
+//     // isOpenModal={isOpenModal}
+//   />
+// </li>
+
+// <Modal
+//   isOpenModal={isOpenModal}
+//   onOpenModal={handleOpenModal}
+//   onCloseModal={handleCloseModal}
+// >
+//   <CreateCollabTaskForm2
+//     onCloseModal={handleCloseModal}
+//     taskToEdit={task}
+//   />
+// </Modal>

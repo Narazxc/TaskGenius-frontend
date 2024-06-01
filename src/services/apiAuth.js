@@ -43,8 +43,8 @@ export async function login({ email, password }) {
       },
     } = res;
 
-    console.log(user);
-    console.log(token);
+    // console.log(user);
+    // console.log(token);
 
     return user;
   } catch (err) {

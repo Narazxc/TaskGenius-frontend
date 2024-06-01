@@ -39,13 +39,13 @@ function UpdatePasswordForm() {
             <h2 className="text-2xl font-semibold ">Change your password</h2>
           </header>
           <div>
-            <div className="rounded-lg bg-white px-28 py-6">
-              <div className="flex items-center border-b border-[#f3f4f6] pb-3">
+            <div className="rounded-lg bg-dashboard-block px-28 py-6">
+              <div className="flex items-center border-b border-[#f3f4f6] pb-3 dark:border-opacity-10">
                 <p className="inline-block w-60 flex-none font-semibold">
                   Current password
                 </p>
                 <input
-                  className="border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm"
+                  className="border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm dark:border-gray-100/20 dark:bg-main-background"
                   type="password"
                   disabled={isUpdating}
                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
@@ -70,13 +70,13 @@ function UpdatePasswordForm() {
                 </div>
               </div>
 
-              <div className="flex items-center border-b border-[#f3f4f6] py-3">
+              <div className="flex items-center border-b border-[#f3f4f6] py-3 dark:border-opacity-10">
                 <p className="inline-block w-60 flex-none font-semibold">
                   New password
                 </p>
 
                 <input
-                  className="border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm"
+                  className="border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm dark:border-gray-100/20 dark:bg-main-background"
                   type="password"
                   disabled={isUpdating}
                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
@@ -97,12 +97,12 @@ function UpdatePasswordForm() {
                 </div>
               </div>
 
-              <div className="flex items-center border-b border-[#f3f4f6] py-3">
+              <div className="flex items-center border-b border-[#f3f4f6] py-3 dark:border-opacity-10">
                 <p className="inline-block w-60 flex-none font-semibold">
                   Confirm password
                 </p>
                 <input
-                  className="border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm"
+                  className="border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm dark:border-gray-100/20 dark:bg-main-background"
                   type="password"
                   disabled={isUpdating}
                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"

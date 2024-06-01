@@ -50,13 +50,13 @@ function UpdateAccountForm() {
             <h1 className="text-2xl font-semibold ">Update your account</h1>
           </header>
           <div>
-            <div className="border-1 rounded-lg bg-white px-28 py-6">
-              <div className="flex items-center border-b border-[#f3f4f6] pb-3">
+            <div className="border-1 bg-dashboard-block rounded-lg px-28 py-6">
+              <div className="flex items-center border-b border-[#f3f4f6] pb-3 dark:border-opacity-10">
                 <p className="inline-block w-60 flex-none font-semibold">
                   Email address
                 </p>
                 <input
-                  className="border-1 basis-4/6 cursor-not-allowed rounded-md border-[#D1D5DB] bg-gray-200 shadow-sm"
+                  className="border-1 dark:bg-main-background basis-4/6 cursor-not-allowed rounded-md border-[#D1D5DB] bg-gray-200 shadow-sm dark:border-gray-100/20"
                   type="text"
                   disabled={true}
                   defaultValue={userData?.email}
@@ -64,7 +64,7 @@ function UpdateAccountForm() {
                 <div className="h-1 basis-3/4">&#x200B;</div>
               </div>
 
-              <div className="flex items-center border-b border-[#f3f4f6] py-3">
+              <div className="flex items-center border-b border-[#f3f4f6] py-3 dark:border-opacity-10">
                 <p className="inline-block w-60 flex-none font-semibold">
                   Name
                 </p>
@@ -72,7 +72,7 @@ function UpdateAccountForm() {
                 <input
                   className={`${
                     isUpdating ? "bg-gray-200" : ""
-                  } border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm transition-colors duration-300`}
+                  } border-1 dark:bg-main-background basis-4/6 rounded-md border-[#D1D5DB] shadow-sm transition-colors duration-300 dark:border-gray-100/20`}
                   type="text"
                   id="name"
                   disabled={isUpdating}
@@ -97,7 +97,7 @@ function UpdateAccountForm() {
                 </div>
               </div>
 
-              <div className="items-center border-b border-[#f3f4f6] py-3">
+              <div className="items-center border-b border-[#f3f4f6] py-3 dark:border-opacity-10">
                 <div className="my-3 flex h-[42px] items-center">
                   <p className="w-60 flex-none font-semibold">Profile photo</p>
                 </div>
@@ -113,7 +113,7 @@ function UpdateAccountForm() {
                   </div>
                   {/* #d1d5db */}
                   <input
-                    className="basis-4/6 rounded-md border border-[#D1D5DB] shadow-sm"
+                    className="dark:bg-main-background basis-4/6 rounded-md border border-[#D1D5DB] shadow-sm dark:border-gray-100/20"
                     type="file"
                     accept="image/*"
                     onChange={(e) => setPhoto(e.target.files[0])}

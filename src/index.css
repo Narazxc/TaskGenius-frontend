@@ -97,15 +97,21 @@ body {
 }
 
 /* 229 231 235 */
-/* .light {
+.light {
   --background: 229, 231, 235;
   --card-background: 209, 213, 219;
+  --dashboard-block: 255, 255, 255;
+  --dark: 0, 0, 0;
 }
 
 .dark {
-  --background: 18, 18, 18;
+  /* --background: 18, 18, 18; */
+  --background: 15, 15, 15;
   --card-background: 30, 30, 30;
-} */
+  --dashboard-block: 30, 30, 30;
+  --dark: 0, 0, 0;
+  /* --dashboard-block: 24, 24, 24; */
+}
 
 .link {
   @apply flex items-center rounded-2xl py-2.5 font-normal duration-300 md:cursor-pointer;

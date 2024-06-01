@@ -8,7 +8,7 @@ export function useCreateTask() {
   const { mutate: createTask, isLoading: isCreating } = useMutation({
     mutationFn: createTaskApi,
     onSuccess: (data) => {
-      console.log(data);
+      // console.log(data);
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
       toast.success("New task created successfully");
     },

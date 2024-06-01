@@ -8,7 +8,7 @@ export function useUpdateCurrentUser() {
   const { isLoading: isUpdating, mutate: updateCurrentUser } = useMutation({
     mutationFn: updateCurrentUserApi,
     onSuccess: (newUserData) => {
-      console.log(newUserData);
+      // console.log(newUserData);
 
       toast.success("User account successfully updated");
 

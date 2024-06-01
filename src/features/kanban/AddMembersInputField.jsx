@@ -37,20 +37,19 @@ const AddMembersInputField = React.forwardRef(function AddMembersInputField(
   };
 
   // console.log("user to render", userToRender[1]._id);
-  userToRender.map((u) => console.log(u._id));
 
   return (
     <div>
       <label
         htmlFor="searchUser"
         className={`mb-1 block text-lg font-medium leading-6 ${
-          headerTextWhite ? "text-xl text-white" : ""
-        } text-gray-900 `}
+          headerTextWhite ? "text-xl text-white dark:text-white" : ""
+        } text-gray-900  dark:text-[#e5e7eb]`}
       >
         Add members
       </label>
 
-      <div className="mb-1 rounded-md bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full">
+      <div className="mb-1 rounded-md bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 dark:bg-dashboard-block dark:ring-gray-300/20 dark:focus-within:ring-indigo-600/50 sm:max-w-full">
         {/* Render selected user */}
         <div className="flex items-center gap-1 px-2">
           {userToRender &&
@@ -86,7 +85,7 @@ const AddMembersInputField = React.forwardRef(function AddMembersInputField(
             //   handleSearch(e.target.value);
             //   // console.log(e.target.value);
             // }}
-            className={`sm:text-md inline-block flex-1 rounded-md border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:leading-6 ${
+            className={`sm:text-md inline-block flex-1 rounded-md border-0 bg-transparent px-5 py-2.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-[#e5e7eb]  sm:leading-6 ${
               bgWhite ? "bg-white" : ""
             }`}
             placeholder="John Smith"

@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 export async function markAllMyNotificationsAsRead() {
   const token = Cookies.get("jwt");
 
-  console.log("hello in api");
+  // console.log("hello in api");
 
   await fetch(`${BASE_URL}/notifications/myNotifications/`, {
     method: "PATCH", // or 'PUT'
@@ -42,7 +42,7 @@ export async function getMyNotifications() {
 }
 
 export async function updateNotification(newNotificationData, id) {
-  console.log("new notifi data", newNotificationData);
+  // console.log("new notifi data", newNotificationData);
   // console.log("in api", newNotificationData, id);
   const token = Cookies.get("jwt");
 
@@ -59,7 +59,7 @@ export async function updateNotification(newNotificationData, id) {
     data: { notification },
   } = await res.json();
 
-  console.log(notification);
+  // console.log(notification);
 
   return notification;
 }

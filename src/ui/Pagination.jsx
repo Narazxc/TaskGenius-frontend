@@ -34,7 +34,7 @@ function Pagination({ count, pageSize }) {
   if (pageCount <= 1) return null;
 
   return (
-    <div className="flex items-center justify-between rounded-md bg-white px-4 py-2">
+    <div className="bg-dashboard-block flex items-center justify-between rounded-md px-4 py-2">
       <p>
         Showing{" "}
         <span className="font-[500]">{(currentPage - 1) * pageSize + 1}</span>{" "}
@@ -49,7 +49,7 @@ function Pagination({ count, pageSize }) {
         <button
           disabled={currentPage === 1}
           onClick={prevPage}
-          className="rounded-md bg-gray-300 px-2 py-1 transition-colors duration-150 hover:bg-gray-200 active:bg-gray-400 disabled:cursor-not-allowed"
+          className="rounded-md bg-gray-300 px-2 py-1 transition-colors duration-150 hover:bg-gray-200 active:bg-gray-400 disabled:cursor-not-allowed dark:bg-[#353535] dark:hover:bg-[#4b4b4b] dark:active:bg-[#1b1b1b]"
         >
           <div className="flex items-center gap-2">
             <span className="text-md">
@@ -61,7 +61,7 @@ function Pagination({ count, pageSize }) {
         <button
           disabled={currentPage === pageCount}
           onClick={nextPage}
-          className="rounded-md bg-gray-300 px-3 py-1.5 transition-colors duration-150 hover:bg-gray-200 active:bg-gray-400 disabled:cursor-not-allowed"
+          className="rounded-md bg-gray-300 px-3 py-1.5 transition-colors duration-150 hover:bg-gray-200 active:bg-gray-400 disabled:cursor-not-allowed dark:bg-[#353535] dark:hover:bg-[#4b4b4b] dark:active:bg-[#1b1b1b]"
         >
           <div className="flex items-center gap-2">
             Next

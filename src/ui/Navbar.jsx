@@ -14,7 +14,7 @@ function Navbar() {
 
   // px-[4.8rem] py-[1.2rem]
   return (
-    <nav className="col-span-full bg-white ">
+    <nav className="bg-dashboard-block col-span-full transition-colors duration-150 dark:text-[#e5e7eb]">
       <div className="flex h-full items-center px-5">
         <div className="ml-auto flex items-center">
           <Notification />

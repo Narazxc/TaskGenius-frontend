@@ -50,14 +50,13 @@ function Tasks() {
 
   useEffect(() => {
     if (!isWorking && preference.length > 0) {
-      console.log("hello");
       setPageSize(preference[0]?.row);
       preference[0]?.viewMode === "card"
         ? setTableView(false)
         : setTableView(true);
     }
 
-    console.log("pageSize", pageSize);
+    // console.log("pageSize", pageSize);
   }, [isWorking, preference, pageSize]);
 
   // // console.log(pageSize);
@@ -85,7 +84,7 @@ function Tasks() {
   if (!isWorking) {
     const indexOfLastPost = currPage * pageSize;
     const indexOfFirstPost = indexOfLastPost - pageSize;
-    console.log(indexOfLastPost, indexOfFirstPost);
+    // console.log(indexOfLastPost, indexOfFirstPost);
     currentTasks = tasks.slice(indexOfFirstPost, indexOfLastPost);
   }
 
@@ -114,16 +113,16 @@ function Tasks() {
         <div className="ml-auto flex gap-3">
           <button
             className={`rounded-md ${
-              !tableView ? "e bg-purple-800" : ""
-            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-300`}
+              !tableView ? " bg-purple-800 dark:bg-purple-800/70" : ""
+            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-100 dark:bg-[#353535]`}
             onClick={handleCloseTableView}
           >
             <IoAlbums className="text-3xl" />
           </button>
           <button
             className={`rounded-md ${
-              tableView ? "e bg-purple-800" : ""
-            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-300`}
+              tableView ? " bg-purple-800 dark:bg-purple-800/70" : ""
+            } bg-gray-400 px-4 py-1 text-white shadow-sm transition-colors duration-100 dark:bg-[#353535]`}
             onClick={handleOpenTableView}
           >
             <IoList className="text-3xl" />
