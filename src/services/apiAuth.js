@@ -1,7 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { backendUrl } from "../utils/constants";
 
-const BASE_URL = "http://localhost:3030/api/v1";
+// const BASE_URL = "http://localhost:3030/api/v1";
 
 // export async function login({ email, password }) {
 //   const res = await fetch(`${BASE_URL}/users/login`, {
@@ -28,7 +29,7 @@ export async function login({ email, password }) {
   try {
     const res = await axios({
       method: "POST",
-      url: `${BASE_URL}/users/login`,
+      url: `${backendUrl}/users/login`,
       data: {
         email,
         password,
@@ -56,7 +57,7 @@ export async function signUp({ name, email, password, passwordConfirm }) {
   try {
     const res = await axios({
       method: "POST",
-      url: `${BASE_URL}/users/signup`,
+      url: `${backendUrl}/users/signup`,
       data: {
         name,
         email,
@@ -92,7 +93,7 @@ export async function getCurrentUser() {
   // const userId = decoded.id;
 
   // Request with the id to get the current user from backend
-  const res = await fetch(`${BASE_URL}/users/me`, {
+  const res = await fetch(`${backendUrl}/users/me`, {
     method: "GET",
     credentials: "include",
     headers: {

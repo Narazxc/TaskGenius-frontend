@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
-import { BASE_URL } from "./apiTasks";
+import { backendUrl } from "../utils/constants";
+// import { BASE_URL } from "./apiTasks";
 
 export async function updateCurrentUser({
   name,
@@ -17,10 +18,10 @@ export async function updateCurrentUser({
   const isUpdatePassword = passwordCurrent && password && passwordConfirm;
 
   if (isUpdatePassword) {
-    url = `${BASE_URL}/users/updateMyPassword`;
+    url = `${backendUrl}/users/updateMyPassword`;
     console.log("hello", url);
   } else if (name || photo) {
-    url = `${BASE_URL}/users/updateMe`;
+    url = `${backendUrl}/users/updateMe`;
   } else {
     return;
   }
@@ -73,7 +74,7 @@ export async function getUsersToAddToTask() {
   // Check if token exist else set user to null
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${BASE_URL}/users/toAddToTask`, {
+  const res = await fetch(`${backendUrl}/users/toAddToTask`, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -94,7 +95,7 @@ export async function getAllUsers({ filter, sortBy }) {
   // Check if token exist else set user to null
   const token = Cookies.get("jwt");
 
-  let url = `${BASE_URL}/users`;
+  let url = `${backendUrl}/users`;
 
   // if (filter) {
   //   const filterValue = filter.value.replace("-", " ");

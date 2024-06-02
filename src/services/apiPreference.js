@@ -1,10 +1,11 @@
+import { backendUrl } from "../utils/constants";
 import { BASE_URL } from "./apiTasks";
 import Cookies from "js-cookie";
 
 export async function getMyPreference() {
   const token = Cookies.get("jwt");
 
-  let url = `${BASE_URL}/preferences`;
+  let url = `${backendUrl}/preferences`;
 
   try {
     const res = await fetch(url, {
@@ -34,7 +35,7 @@ export async function updatePreference(newPreferenceData, id) {
 
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${BASE_URL}/preferences/${id}`, {
+  const res = await fetch(`${backendUrl}/preferences/${id}`, {
     method: "PATCH", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
