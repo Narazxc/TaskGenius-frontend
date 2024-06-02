@@ -12,7 +12,7 @@ import AddMembersInputField from "./AddMembersInputField";
 import Modal from "../../ui/Modal";
 import { useUsersToAddToTask } from "./useUsersToAddToTask";
 import { useEffect } from "react";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 
 function CreateCollabTaskForm({ onCloseModal, taskToEdit = {} }) {
   // const { createTask, isCreating } = useCreateTask();
@@ -226,7 +226,8 @@ function CreateCollabTaskForm({ onCloseModal, taskToEdit = {} }) {
                     >
                       <img
                         className="h-28 w-28 rounded-full"
-                        src={`${user.item.photo && url + `${user.item.photo}`}`}
+                        // src={`${user.item.photo && url + `${user.item.photo}`}`}
+                        src={user.item.cloudinaryPhoto}
                         alt={`Photo of ${user.item.name}`}
                       />
 

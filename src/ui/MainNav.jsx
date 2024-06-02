@@ -22,7 +22,8 @@ function MainNav({ isOpen }) {
     <nav>
       {isLoading && <p>Loading...</p>}
       {/* gap-[0.8rem] */}
-      {!isLoading && (
+      {
+        // !isLoading &&
         <ul className={`mt-1 flex flex-col ${isOpen && "gap-1"} gap-1`}>
           <li>
             <NavLink className="link hover:bg-blue-200" to="/dashboard">
@@ -104,7 +105,7 @@ function MainNav({ isOpen }) {
             </li>
           )}
         </ul>
-      )}
+      }
     </nav>
   );
 }
@@ -128,4 +129,5 @@ function MainNav({ isOpen }) {
   {isOpen && <span>Kanban</span>}
 </div> */
 }
+
 export default MainNav;

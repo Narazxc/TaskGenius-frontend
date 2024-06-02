@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 import DropDownForAdminTable from "./DropDownForAdminTable";
 
 function UserRow({ user }) {
@@ -25,7 +25,8 @@ function UserRow({ user }) {
           <div className="flex items-center gap-4">
             <img
               className="h-10 w-10 rounded-full"
-              src={`${user.photo && url + `${user.photo}`}`}
+              // src={`${user.photo && url + `${user.photo}`}`}
+              src={user.cloudinaryPhoto}
               alt={`Photo of ${user.name}`}
             />
           </div>

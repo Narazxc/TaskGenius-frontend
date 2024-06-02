@@ -4,7 +4,7 @@ import Modal from "../../ui/Modal";
 import CreateTaskForm from "./CreateTaskForm";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import DropDownForTable from "./DropDownForTable";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 import { format } from "date-fns";
 import TaskStatusTag from "./TaskStatusTag";
 import PriorityTag from "../../ui/PriorityTag";
@@ -60,7 +60,8 @@ function TaskRow({ task }) {
           <div className="flex items-center gap-4">
             <img
               className="h-8 w-8 rounded-full"
-              src={`${creator.photo && url + `${creator.photo}`}`}
+              // src={`${creator.photo && url + `${creator.photo}`}`}
+              src={creator.cloudinaryPhoto}
               alt={`Photo of ${creator.name}`}
             />
             <span>{creator?.name}</span>

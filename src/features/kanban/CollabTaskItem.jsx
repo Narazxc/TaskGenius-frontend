@@ -8,7 +8,7 @@ import CreateCollabTaskForm2 from "./CreateCollabTaskForm2";
 import { useState } from "react";
 import { useDeleteTask } from "../tasks/useDeleteTask";
 import { IoAlarmOutline, IoHourglassOutline } from "react-icons/io5";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 function CollabTaskItem({ task }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const { isDeleting, deleteTask } = useDeleteTask();
@@ -100,7 +100,8 @@ function CollabTaskItem({ task }) {
                 <img
                   key={member.photo}
                   className="ml-[-8px] h-9 w-9 rounded-full shadow-md"
-                  src={`${member.photo && url + `${member.photo}`}`}
+                  // src={`${member.photo && url + `${member.photo}`}`}
+                  src={member.cloudinaryPhoto}
                   alt={`Photo of ${member.name}`}
                 />
               ))}

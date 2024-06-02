@@ -1,6 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { backendUrl } from "../utils/constants";
+import { BASE_URL } from "./apiTasks";
+// import { BASE_URL } from "../utils/constants";
+// import { backendUrl } from "../utils/constants";
 
 // const BASE_URL = "http://localhost:3030/api/v1";
 
@@ -29,7 +31,7 @@ export async function login({ email, password }) {
   try {
     const res = await axios({
       method: "POST",
-      url: `${backendUrl}/users/login`,
+      url: `${BASE_URL}/users/login`,
       data: {
         email,
         password,
@@ -46,6 +48,7 @@ export async function login({ email, password }) {
 
     // console.log(user);
     // console.log(token);
+    Cookies.set("jwt", token);
 
     return user;
   } catch (err) {
@@ -57,7 +60,7 @@ export async function signUp({ name, email, password, passwordConfirm }) {
   try {
     const res = await axios({
       method: "POST",
-      url: `${backendUrl}/users/signup`,
+      url: `${BASE_URL}/users/signup`,
       data: {
         name,
         email,
@@ -74,8 +77,9 @@ export async function signUp({ name, email, password, passwordConfirm }) {
       },
     } = res;
 
-    console.log(user);
-    console.log(token);
+    // console.log(user);
+    // console.log(token);
+    Cookies.set("jwt", token);
 
     return user;
   } catch (err) {
@@ -86,6 +90,8 @@ export async function signUp({ name, email, password, passwordConfirm }) {
 export async function getCurrentUser() {
   // Check if token exist else set user to null
   const token = Cookies.get("jwt");
+
+  // console.log("token", token);
   if (!token) return null;
 
   // Decode token to get user id
@@ -93,7 +99,7 @@ export async function getCurrentUser() {
   // const userId = decoded.id;
 
   // Request with the id to get the current user from backend
-  const res = await fetch(`${backendUrl}/users/me`, {
+  const res = await fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
     headers: {

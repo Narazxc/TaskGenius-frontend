@@ -50,13 +50,13 @@ function UpdateAccountForm() {
             <h1 className="text-2xl font-semibold ">Update your account</h1>
           </header>
           <div>
-            <div className="border-1 bg-dashboard-block rounded-lg px-28 py-6">
+            <div className="border-1 rounded-lg bg-dashboard-block px-28 py-6">
               <div className="flex items-center border-b border-[#f3f4f6] pb-3 dark:border-opacity-10">
                 <p className="inline-block w-60 flex-none font-semibold">
                   Email address
                 </p>
                 <input
-                  className="border-1 dark:bg-main-background basis-4/6 cursor-not-allowed rounded-md border-[#D1D5DB] bg-gray-200 shadow-sm dark:border-gray-100/20"
+                  className="border-1 basis-4/6 cursor-not-allowed rounded-md border-[#D1D5DB] bg-gray-200 shadow-sm dark:border-gray-100/20 dark:bg-main-background"
                   type="text"
                   disabled={true}
                   defaultValue={userData?.email}
@@ -72,7 +72,7 @@ function UpdateAccountForm() {
                 <input
                   className={`${
                     isUpdating ? "bg-gray-200" : ""
-                  } border-1 dark:bg-main-background basis-4/6 rounded-md border-[#D1D5DB] shadow-sm transition-colors duration-300 dark:border-gray-100/20`}
+                  } border-1 basis-4/6 rounded-md border-[#D1D5DB] shadow-sm transition-colors duration-300 dark:border-gray-100/20 dark:bg-main-background`}
                   type="text"
                   id="name"
                   disabled={isUpdating}
@@ -106,14 +106,15 @@ function UpdateAccountForm() {
                   <div className="min-w-[240px]">
                     <img
                       // src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      src={`${userData.photo && url + `${userData.photo}`}`}
+                      // src={`${userData.photo && url + `${userData.photo}`}`}
+                      src={userData.cloudinaryPhoto}
                       alt=""
                       className="h-24 w-24 rounded-full object-cover"
                     />
                   </div>
                   {/* #d1d5db */}
                   <input
-                    className="dark:bg-main-background basis-4/6 rounded-md border border-[#D1D5DB] shadow-sm dark:border-gray-100/20"
+                    className="basis-4/6 rounded-md border border-[#D1D5DB] shadow-sm dark:border-gray-100/20 dark:bg-main-background"
                     type="file"
                     accept="image/*"
                     onChange={(e) => setPhoto(e.target.files[0])}

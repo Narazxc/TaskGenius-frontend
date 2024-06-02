@@ -5,7 +5,7 @@ import {
   IoTrashBinOutline,
 } from "react-icons/io5";
 import { useNotifications } from "./useNotifications";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";   use cloundinary instead
 import { useUpdateNotification } from "./useUpdateNotification";
 // import { useState } from "react";
 import { useMarkAllMyNotificationsAsRead } from "./useMarkAllMyNotificationsAsRead";
@@ -95,7 +95,8 @@ function Notification() {
                   >
                     <div>
                       <img
-                        src={`${url}${notification?.fromUser?.photo}`}
+                        // src={`${url}${notification?.fromUser?.photo}`}
+                        src={notification.fromUser.cloudinaryPhoto}
                         className="w-14 rounded-full object-contain"
                         alt={`photo of ${notification.fromUser.name} `}
                       />

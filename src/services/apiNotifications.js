@@ -1,4 +1,4 @@
-import { backendUrl } from "../utils/constants";
+// import { backendUrl } from "../utils/constants";
 import { BASE_URL } from "./apiTasks";
 import Cookies from "js-cookie";
 
@@ -7,7 +7,7 @@ export async function markAllMyNotificationsAsRead() {
 
   // console.log("hello in api");
 
-  await fetch(`${backendUrl}/notifications/myNotifications/`, {
+  await fetch(`${BASE_URL}/notifications/myNotifications/`, {
     method: "PATCH", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export async function markAllMyNotificationsAsRead() {
 export async function getMyNotifications() {
   const token = Cookies.get("jwt");
 
-  let url = `${backendUrl}/notifications/myNotifications`;
+  let url = `${BASE_URL}/notifications/myNotifications`;
 
   try {
     const res = await fetch(url, {
@@ -47,7 +47,7 @@ export async function updateNotification(newNotificationData, id) {
   // console.log("in api", newNotificationData, id);
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${backendUrl}/notifications/${id}`, {
+  const res = await fetch(`${BASE_URL}/notifications/${id}`, {
     method: "PATCH", // or 'PUT'
     headers: {
       "Content-Type": "application/json",

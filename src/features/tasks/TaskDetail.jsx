@@ -6,7 +6,7 @@ import {
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useTask } from "./useTask";
 import { formatDistanceFromNow } from "../../utils/helpers";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 import { useUpdateTask } from "./useUpdateTask";
 import { format } from "date-fns";
 import { memo, useEffect, useState } from "react";
@@ -15,6 +15,8 @@ function TaskDetail() {
   const moveBack = useMoveBack();
   const { isLoading, task, error } = useTask();
   const { isUpdating, updateTask } = useUpdateTask();
+
+  // console.log(task);
 
   const [currDate, setCurrDate] = useState(new Date());
 
@@ -152,9 +154,10 @@ function TaskDetail() {
                 <div className="flex items-center gap-3">
                   <img
                     className="h-9 w-9 rounded-full"
-                    src={`${
-                      task.creator.photo && url + `${task.creator.photo}`
-                    }`}
+                    // src={`${
+                    //   task.creator.photo && url + `${task.creator.photo}`
+                    // }`}
+                    src={task.creator.cloudinaryPhoto}
                     alt={`Photo of ${task.creator.name}`}
                   />
                   <p>{task.creator.name}</p>
@@ -173,7 +176,8 @@ function TaskDetail() {
                       >
                         <img
                           className="h-9 w-9 rounded-full"
-                          src={`${member.photo && url + `${member.photo}`}`}
+                          // src={`${member.photo && url + `${member.photo}`}`}
+                          src={member.cloudinaryPhoto}
                           alt={`Photo of ${member.name}`}
                         />
                         <p>{member.name}</p>

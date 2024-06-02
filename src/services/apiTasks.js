@@ -1,13 +1,14 @@
 import Cookies from "js-cookie";
 import { PAGE_SIZE, backendUrl } from "../utils/constants";
 
-export const BASE_URL = "http://127.0.0.1:3030/api/v1";
+// export const BASE_URL = "http://127.0.0.1:3030/api/v1";
+export const BASE_URL = backendUrl;
 
 export async function getTasks() {
   const token = Cookies.get("jwt");
 
   try {
-    const res = await fetch(`${backendUrl}/tasks`, {
+    const res = await fetch(`${BASE_URL}/tasks`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -32,7 +33,7 @@ export async function getTask(id) {
   const token = Cookies.get("jwt");
   // console.log(`${BASE_URL}/tasks/${id}`);
 
-  const res = await fetch(`${backendUrl}/tasks/${id}`, {
+  const res = await fetch(`${BASE_URL}/tasks/${id}`, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -56,7 +57,7 @@ export async function getMyTasks({ filter, sortBy, page }) {
   // console.log(filter);
   const token = Cookies.get("jwt");
 
-  let url = `${backendUrl}/tasks/my-tasks`;
+  let url = `${BASE_URL}/tasks/my-tasks`;
 
   // if (filter) {
   //   const filterValue = filter.value.replace("-", " ");
@@ -137,7 +138,7 @@ export async function getMyTasks({ filter, sortBy, page }) {
 export async function createTask(newTask) {
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${backendUrl}/tasks`, {
+  const res = await fetch(`${BASE_URL}/tasks`, {
     method: "POST", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
@@ -163,7 +164,7 @@ export async function createTask(newTask) {
 export async function createCollabTask(newTask) {
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${backendUrl}/tasks/collaboration`, {
+  const res = await fetch(`${BASE_URL}/tasks/collaboration`, {
     method: "POST", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
@@ -188,7 +189,7 @@ export async function createCollabTask(newTask) {
 export async function deleteTask(id) {
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${backendUrl}/tasks/${id}`, {
+  const res = await fetch(`${BASE_URL}/tasks/${id}`, {
     method: "DELETE",
     credentials: "include",
     headers: {
@@ -212,7 +213,7 @@ export async function updateTask(newTaskData, id) {
   // console.log("in api", newTaskData, id);
   const token = Cookies.get("jwt");
 
-  const res = await fetch(`${backendUrl}/tasks/${id}`, {
+  const res = await fetch(`${BASE_URL}/tasks/${id}`, {
     method: "PATCH", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
@@ -231,7 +232,7 @@ export async function updateTask(newTaskData, id) {
 
 export async function getCollabTasks({ filter, sortBy }) {
   const token = Cookies.get("jwt");
-  let url = `${backendUrl}/tasks/collaboration`;
+  let url = `${BASE_URL}/tasks/collaboration`;
 
   // If sort by priority, use priorityIndex property to sort
   if (sortBy.field === "priority") {

@@ -7,7 +7,7 @@ import AddMembersInputField from "./AddMembersInputField";
 import { useUsersToAddToTask } from "./useUsersToAddToTask";
 import { getFormattedDateTime, isObjEmpty } from "../../utils/helpers";
 import { useCreateCollabTask } from "./useCreateCollabTask";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 import TaskStatusListbox from "../tasks/TaskStatusListbox";
 import { useUpdateTask } from "../tasks/useUpdateTask";
 
@@ -384,7 +384,8 @@ function CreateCollabTaskForm2({ onCloseModal, taskToEdit = {} }) {
                     >
                       <img
                         className="h-28 w-28 rounded-full"
-                        src={`${user.item.photo && url + `${user.item.photo}`}`}
+                        // src={`${user.item.photo && url + `${user.item.photo}`}`}
+                        src={user.item.cloudinaryPhoto}
                         alt={`Photo of ${user.item.name}`}
                       />
 

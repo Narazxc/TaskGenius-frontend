@@ -6,7 +6,7 @@ import { useUser } from "../authentication/useUser";
 import TaskStatusTag from "../tasks/TaskStatusTag";
 import PriorityTag from "../../ui/PriorityTag";
 import { format } from "date-fns";
-import { url } from "../../utils/constants";
+// import { url } from "../../utils/constants";  use cloundinary instead
 import DropDownForTable from "../tasks/DropDownForTable";
 
 export default function CollabTaskRow({ task }) {
@@ -61,7 +61,8 @@ export default function CollabTaskRow({ task }) {
               <img
                 key={member.photo}
                 className="ml-[-10px] h-8 w-8 rounded-full shadow-lg"
-                src={`${member.photo && url + `${member.photo}`}`}
+                // src={`${member.photo && url + `${member.photo}`}`}
+                src={member.cloudinaryPhoto}
                 alt={`Photo of ${member.name}`}
               />
             ))}
@@ -71,7 +72,8 @@ export default function CollabTaskRow({ task }) {
           <div className="flex items-center gap-4">
             <img
               className="h-8 w-8 rounded-full"
-              src={`${creator.photo && url + `${creator.photo}`}`}
+              // src={`${creator.photo && url + `${creator.photo}`}`}
+              src={creator.cloudinaryPhoto}
               alt={`Photo of ${creator.name}`}
             />
             <span>{creator?.name}</span>
