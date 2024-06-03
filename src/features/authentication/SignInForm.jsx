@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useLogin } from "./useLogin";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 function SignInForm() {
   const [email, setEmail] = useState("test@google.com");
   const [password, setPassword] = useState("test12345");
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
@@ -79,22 +83,41 @@ function SignInForm() {
                 </a>
               </div>
             </div>
-            <div className="mt-2">
+            <div
+              className={`mt-2 flex justify-between  ${
+                isLoading ? "bg-gray-200" : "bg-white"
+              } block w-full overflow-hidden rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-colors duration-300 placeholder:text-gray-400 ${
+                isFocused ? "ring-2 ring-inset ring-indigo-600" : ""
+              } sm:text-sm sm:leading-6`}
+            >
               <input
                 id="password"
                 name="password"
-                type="password"
-                autoComplete="current-password"
+                type={isShowPassword ? "text" : "password"}
+                aria-label="Password"
+                autoComplete="off"
                 required
-                className={` ${
-                  isLoading ? "bg-gray-200" : ""
-                } block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  transition-colors duration-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                className={`h-[24px] flex-1 border-none bg-transparent p-0 focus:ring-0 sm:text-sm sm:leading-6`}
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
                 disabled={isLoading}
               />
+              <button
+                type="button"
+                onClick={() =>
+                  setIsShowPassword((isShowPassword) => !isShowPassword)
+                }
+              >
+                {isShowPassword ? (
+                  <IoEyeOffOutline className="text-lg" />
+                ) : (
+                  <IoEyeOutline className="text-lg" />
+                )}
+              </button>
             </div>
           </div>
 
@@ -110,13 +133,13 @@ function SignInForm() {
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?{" "}
-          <a
-            href="#"
+          Don&#39;t have an account?{" "}
+          <Link
+            to="/signup"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Start a 14 day free trial
-          </a>
+            create one
+          </Link>
         </p>
       </div>
     </div>
